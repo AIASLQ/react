@@ -3,22 +3,24 @@ import logo from "./assets/images/logo.svg";
 import "./assets/css/App.css";
 import Home from "./components/Home";
 import News from "./components/News";
+import Todolist from "./components/Todolist";
+import Constrain from "./components/Constrain";
 class App extends Component {
   constructor(props) {
     super(props); //用于父子组建传值
     this.state = {
-      num:0,
+      num: 0,
       userinfo: "孙菲菲",
-      one:"第一种方式",
-      two:"第二种方式",
-      three:"第三种方式",
+      one: "第一种方式",
+      two: "第二种方式",
+      three: "第三种方式",
       dataList: [
         { title: "孙菲菲" },
         { title: "孙菲菲" },
         { title: "孙菲菲" },
         { title: "孙菲菲" }
       ]
-    };  
+    };
 
     this.getMessage = this.getMessage.bind(this);
   }
@@ -51,39 +53,39 @@ class App extends Component {
   }
 
   //箭头函数
-  thispoint=()=>{
+  thispoint = () => {
     alert(this.state.three);
-  }
+  };
 
-  deliveryValue =(value)=>{
+  deliveryValue = value => {
     this.setState({
-      userinfo:value
-    })
-  }
+      userinfo: value
+    });
+  };
 
-  changeData =()=>{
+  changeData = () => {
     var a = "";
-    if(this.state.num%2===0){
-      a = 'nihao'
-    }else{
+    if (this.state.num % 2 === 0) {
+      a = "nihao";
+    } else {
       a = this.state.num;
-    } 
+    }
     this.setState({
-      userinfo:a
-    })
-    this.state.num ++;
-  }
+      userinfo: a
+    });
+    this.state.num++;
+  };
 
   render() {
     let dataMap = this.state.dataList.map((v, i) => {
-      return <li key={i}>{v.title}</li>;
+      return <li key={i}> {v.title} </li>;
     });
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit dd <code> src / App.js </code> and save to reload.
+            Edit dd <code> src / App.js </code> and save to reload.{" "}
           </p>
           <a
             className="App-link"
@@ -91,17 +93,21 @@ class App extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-           {this.state.userinfo}
+            {this.state.userinfo}
           </a>
         </header>
-        <ul>{dataMap}</ul>
-        <button onClick={this.run.bind(this)}>第一种方式</button>
-        <button onClick={this.getMessage}>第二种方式</button>
-        <button onClick={this.thispoint}>第三种方式</button> 
-        <button onClick={this.changeData}>改变数据</button> 
-        <button onClick={this.deliveryValue.bind(this,'传值')}>传递数据</button> 
+        <ul> {dataMap} </ul>
+        <button onClick={this.run.bind(this)}> 第一种方式 </button>
+        <button onClick={this.getMessage}> 第二种方式 </button>
+        <button onClick={this.thispoint}> 第三种方式 </button>
+        <button onClick={this.changeData}> 改变数据 </button>
+        <button onClick={this.deliveryValue.bind(this, "传值")}>
+          传递数据
+        </button>
         <Home />
         <News />
+        <Todolist />
+        <Constrain />
       </div>
     );
   }
