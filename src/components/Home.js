@@ -47,12 +47,13 @@ class Home extends Component {
           alert(event.currentTarget.value)
       }
   };
+
   
   render() {
     return (
       <div>
         <hr />
-        <div>Home组建开始</div>
+        <div>{this.props.msg}</div>
         <br />
         <h4> {this.state.msg} </h4>
         {/* 事件对象 */}
@@ -89,3 +90,4 @@ class Home extends Component {
 }
 
 export default Home;
+

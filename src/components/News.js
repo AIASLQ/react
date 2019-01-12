@@ -8,9 +8,9 @@ class News extends React.Component {
     };
   }
 
-  componentWillMount() { 
+  componentWillMount() {
     this.setState({
-      select: { selectId: 'selectId' }
+      select: { selectId: "selectId" }
     });
     console.log(this.state);
   }
@@ -18,14 +18,12 @@ class News extends React.Component {
   render() {
     return (
       <div>
+        <div> {this.props.msg} </div>{" "}
         <ul>
-          <li>{this.state.userinfo}</li>
-          <li>这是一个列表</li>
-          <li>这是一个列表</li>
-          <li>这是一个列表</li>
-          <li>这是一个列表</li>
-          <li>这是一个列表</li>
-        </ul>
+          <li> {this.state.userinfo} </li> <li> 这是一个列表 </li>{" "}
+          <li> 这是一个列表 </li> <li> 这是一个列表 </li>{" "}
+          <li> 这是一个列表 </li> <li> 这是一个列表 </li>{" "}
+        </ul>{" "}
       </div>
     );
   }

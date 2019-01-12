@@ -31,6 +31,8 @@ class Constrain extends Component {
   render() {
     return (
       <div>
+          sfdv
+          {this.props.msg}
         <hr />
         <br />
         <div>约束性组件 非约束性组件</div>
@@ -93,6 +95,7 @@ class Constrain extends Component {
   }
 
   handlName = event => {
+      debugger;
     this.setState({
       name: event.target.value
     });

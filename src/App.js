@@ -5,10 +5,12 @@ import Home from "./components/Home";
 import News from "./components/News";
 import Todolist from "./components/Todolist";
 import Constrain from "./components/Constrain";
+import Footer from "./components/Footer";
 class App extends Component {
   constructor(props) {
     super(props); //用于父子组建传值
     this.state = {
+      parentMsg:"发的生不逢时表示",
       num: 0,
       userinfo: "孙菲菲",
       one: "第一种方式",
@@ -56,12 +58,23 @@ class App extends Component {
   thispoint = () => {
     alert(this.state.three);
   };
+// 获取子组件传递过来的数据
+  getchildrenData =(param)=>{
+    let msg = param;
+     this.setState({
+       parentMsg:msg
+     })
+  };
 
   deliveryValue = value => {
     this.setState({
       userinfo: value
     });
   };
+
+  parentFunction = ()=>{
+    alert('父组件方法');
+  }
 
   changeData = () => {
     var a = "";
@@ -75,6 +88,18 @@ class App extends Component {
     });
     this.state.num++;
   };
+  /**
+   * 父组件调用子组件
+   * 1、在组件上增加属性 ref=“name”；
+   * 2、获取子组件数据 this.refs.name.state.....
+   * 3、调用子组件方法 this.refs.name.funName(params);
+   * 
+   *  */ 
+
+  getChildrenFunAndMessage=()=>{
+    this.refs.footer.run("fgfg");
+    alert(this.refs.footer.state.msg);
+  }
 
   render() {
     let dataMap = this.state.dataList.map((v, i) => {
@@ -104,10 +129,12 @@ class App extends Component {
         <button onClick={this.deliveryValue.bind(this, "传值")}>
           传递数据
         </button>
-        <Home />
-        <News />
-        <Todolist />
-        <Constrain />
+        <Home msg="Home"/>
+        <News msg = "News"/>
+        <Todolist msg="Todolist"  parentFunction={this.parentFunction} app={this}/>
+        <Constrain   msg="Constrain"/>
+        <button onClick={this.getChildrenFunAndMessage}>获取子组件数据以及调用子组件方法</button>
+        <Footer ref="footer"/>
       </div>
     );
   }
