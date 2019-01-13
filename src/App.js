@@ -9,6 +9,8 @@ import Footer from "./components/Footer";
 import Axios from "./components/Axios";
 import FetchJsonp from "./components/FetchJsonp";
 
+import Lifecyle from "./components/Lifecyle"
+
 class App extends Component {
   constructor(props) {
     super(props); //用于父子组建传值
@@ -150,6 +152,9 @@ class App extends Component {
         />
         <Axios />
         <FetchJsonp />
+        <Lifecyle/>
+
+        
       </div>
     );
   }

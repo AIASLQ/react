@@ -4,6 +4,7 @@ import axios from "axios";
 
 class Axios extends Component {
   constructor(props) {
+    
     super(props);
     this.state = {
       list:[]
@@ -23,6 +24,11 @@ class Axios extends Component {
         console.log(err);
       });
   };
+
+  componentDidMount() {
+    this.getData();
+  }
+  
   render() {
     return (
       <div>
