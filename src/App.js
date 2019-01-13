@@ -6,6 +6,9 @@ import News from "./components/News";
 import Todolist from "./components/Todolist";
 import Constrain from "./components/Constrain";
 import Footer from "./components/Footer";
+import Axios from "./components/Axios";
+import FetchJsonp from "./components/FetchJsonp";
+
 class App extends Component {
   constructor(props) {
     super(props); //用于父子组建传值
@@ -110,7 +113,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit dd <code> src / App.js </code> and save to reload.{" "}
+            Edit dd <code> src / App.js </code> and save to reload.
           </p>
           <a
             className="App-link"
@@ -140,11 +143,16 @@ class App extends Component {
         <button onClick={this.getChildrenFunAndMessage}>
           获取子组件数据以及调用子组件方法
         </button>
-        <Footer num={this.state.num}  title={this.state.parentMsg} ref="footer" />
+        <Footer
+          num={this.state.num}
+          title={this.state.parentMsg}
+          ref="footer"
+        />
+        <Axios />
+        <FetchJsonp />
       </div>
     );
   }
 }
-
 
 export default App;
