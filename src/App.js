@@ -10,8 +10,8 @@ class App extends Component {
   constructor(props) {
     super(props); //用于父子组建传值
     this.state = {
-      parentMsg:"发的生不逢时表示",
-      num: 0,
+      parentMsg: "发的生不逢时表示",
+      num: 40,
       userinfo: "孙菲菲",
       one: "第一种方式",
       two: "第二种方式",
@@ -58,12 +58,12 @@ class App extends Component {
   thispoint = () => {
     alert(this.state.three);
   };
-// 获取子组件传递过来的数据
-  getchildrenData =(param)=>{
+  // 获取子组件传递过来的数据
+  getchildrenData = param => {
     let msg = param;
-     this.setState({
-       parentMsg:msg
-     })
+    this.setState({
+      parentMsg: msg
+    });
   };
 
   deliveryValue = value => {
@@ -72,9 +72,9 @@ class App extends Component {
     });
   };
 
-  parentFunction = ()=>{
-    alert('父组件方法');
-  }
+  parentFunction = () => {
+    alert("父组件方法");
+  };
 
   changeData = () => {
     var a = "";
@@ -93,13 +93,13 @@ class App extends Component {
    * 1、在组件上增加属性 ref=“name”；
    * 2、获取子组件数据 this.refs.name.state.....
    * 3、调用子组件方法 this.refs.name.funName(params);
-   * 
-   *  */ 
+   *
+   *  */
 
-  getChildrenFunAndMessage=()=>{
+  getChildrenFunAndMessage = () => {
     this.refs.footer.run("fgfg");
     alert(this.refs.footer.state.msg);
-  }
+  };
 
   render() {
     let dataMap = this.state.dataList.map((v, i) => {
@@ -129,15 +129,22 @@ class App extends Component {
         <button onClick={this.deliveryValue.bind(this, "传值")}>
           传递数据
         </button>
-        <Home msg="Home"/>
-        <News msg = "News"/>
-        <Todolist msg="Todolist"  parentFunction={this.parentFunction} app={this}/>
-        <Constrain   msg="Constrain"/>
-        <button onClick={this.getChildrenFunAndMessage}>获取子组件数据以及调用子组件方法</button>
-        <Footer ref="footer"/>
+        <Home msg="Home" />
+        <News msg="News" />
+        <Todolist
+          msg="Todolist"
+          parentFunction={this.parentFunction}
+          app={this}
+        />
+        <Constrain msg="Constrain" />
+        <button onClick={this.getChildrenFunAndMessage}>
+          获取子组件数据以及调用子组件方法
+        </button>
+        <Footer num={this.state.num}  title={this.state.parentMsg} ref="footer" />
       </div>
     );
   }
 }
+
 
 export default App;
